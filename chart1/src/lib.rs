@@ -27,7 +27,7 @@ pub trait USetTrait<T: PartialEq + Eq> {
 
 struct USet<T> (Vec<T>);
 
-impl<T> USetTrait<T> for USet<T> {
+impl<T: PartialEq + Eq> USetTrait<T> for USet<T> {
     fn size(&self) -> usize {
         self.len()
     }

@@ -7,5 +7,9 @@ name = "chart1"
 version = "0.1.0"
 
 [[package]]
+name = "chart2"
+version = "0.1.0"
+
+[[package]]
 name = "open-data-structures"
 version = "0.1.0"

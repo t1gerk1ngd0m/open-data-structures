@@ -1,10 +1,4 @@
-trait ArrayStackTrait<T> {
-  fn size(&self) -> usize;
-  fn get(&self, index: usize) -> T;
-  fn set(&mut self, index: usize, item: T) -> T;
-  fn add(&mut self, index: usize, item: T);
-  fn remove(&mut self, index: usize) -> T;
-}
+use crate::list::List;
 
 #[derive(Default)]
 struct ArrayStack<T> {
@@ -27,7 +21,7 @@ impl<T: Copy + Default> ArrayStack<T> {
   }
 }
 
-impl<T: Copy + Default> ArrayStackTrait<T> for ArrayStack<T> {
+impl<T: Copy + Default> List<T> for ArrayStack<T> {
   fn size(&self) -> usize {
     self.n
   }

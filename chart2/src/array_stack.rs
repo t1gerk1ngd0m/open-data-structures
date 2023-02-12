@@ -1,4 +1,10 @@
-use crate::list::List;
+pub trait Stack<T> {
+  fn size(&self) -> usize;
+  fn get(&self, index: usize) -> T;
+  fn set(&mut self, index: usize, item: T) -> T;
+  fn add(&mut self, index: usize, item: T);
+  fn remove(&mut self, index: usize) -> T;
+}
 
 #[derive(Default)]
 struct ArrayStack<T> {
@@ -8,8 +14,8 @@ struct ArrayStack<T> {
 
 impl<T: Copy + Default> ArrayStack<T> {
   fn resize(&mut self) {
-    let n_cap = self.n * 2;
-    let mut new_array = vec![Default::default(); n_cap].into_boxed_slice();
+    let new_limit = self.n * 2;
+    let mut new_array = vec![Default::default(); new_limit].into_boxed_slice();
     for i in 0..self.n {
       new_array[i] = self.a[i];
     }
@@ -21,7 +27,7 @@ impl<T: Copy + Default> ArrayStack<T> {
   }
 }
 
-impl<T: Copy + Default> List<T> for ArrayStack<T> {
+impl<T: Copy + Default> Stack<T> for ArrayStack<T> {
   fn size(&self) -> usize {
     self.n
   }

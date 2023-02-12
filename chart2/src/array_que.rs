@@ -6,14 +6,14 @@ pub trait Que<T> {
   fn remove(&mut self) -> T;
 }
 
-#[derive(Default, std::fmt::Debug)]
+#[derive(Default)]
 struct ArrayQue<T> {
   a: Box<[T]>,
   j: usize,
   n: usize
 }
 
-impl<T: Copy + Default + std::fmt::Debug> ArrayQue<T> {
+impl<T: Copy + Default> ArrayQue<T> {
   fn limit(&self) -> usize {
     self.a.len()
   }
@@ -29,7 +29,7 @@ impl<T: Copy + Default + std::fmt::Debug> ArrayQue<T> {
   }
 }
 
-impl<T: Copy + Default + std::fmt::Debug> Que<T> for ArrayQue<T> {
+impl<T: Copy + Default> Que<T> for ArrayQue<T> {
   fn size(&self) -> usize {
     self.n
   }

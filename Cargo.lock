@@ -9,6 +9,9 @@ version = "0.1.0"
 [[package]]
 name = "chart2"
 version = "0.1.0"
+dependencies = [
+ "chart1",
+]
 
 [[package]]
 name = "open-data-structures"

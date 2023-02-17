@@ -1,4 +1,4 @@
-use crate::array_stack::Stack;
+use chart1::interface::List;
 use crate::array_stack::ArrayStack;
 
 struct RootishArrayStack<T> {
@@ -14,7 +14,7 @@ impl<T: Copy + Default> RootishArrayStack<T> {
   }
 }
 
-impl<T: Copy + Default> Stack<T> for RootishArrayStack<T> {
+impl<T: Copy + Default> List<T> for RootishArrayStack<T> {
   fn size(&self) -> usize {
     self.n
   }

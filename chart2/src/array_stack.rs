@@ -1,10 +1,4 @@
-pub trait Stack<T> {
-  fn size(&self) -> usize;
-  fn get(&self, index: usize) -> T;
-  fn set(&mut self, index: usize, item: T) -> T;
-  fn add(&mut self, index: usize, item: T);
-  fn remove(&mut self, index: usize) -> T;
-}
+use chart1::interface::List;
 
 #[derive(Default)]
 pub struct ArrayStack<T> {
@@ -27,7 +21,7 @@ impl<T: Copy + Default> ArrayStack<T> {
   }
 }
 
-impl<T: Copy + Default> Stack<T> for ArrayStack<T> {
+impl<T: Copy + Default> List<T> for ArrayStack<T> {
   fn size(&self) -> usize {
     self.n
   }

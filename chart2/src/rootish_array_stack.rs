@@ -22,7 +22,8 @@ impl<T: Copy + Default> Stack<T> for RootishArrayStack<T> {
   fn get(&self, index: usize) -> T {
     let b = self.i2b(index);
     let j = index - b*(b+1)/2;
-    self.blocks.get(b)[j]
+    // self.blocks.get(b)[j]
+    todo!()
   }
 
   fn set(&mut self, index: usize, item: T) -> T {

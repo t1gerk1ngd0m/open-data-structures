@@ -13,10 +13,6 @@ pub struct ArrayStack<T> {
 }
 
 impl<T: Copy + Default> ArrayStack<T> {
-  pub fn new() -> Self {
-    Self { a: Box::new([T::default(); 1]), n: 0 }
-  }
-
   fn resize(&mut self) {
     let new_limit = self.n * 2;
     let mut new_array = vec![Default::default(); new_limit].into_boxed_slice();

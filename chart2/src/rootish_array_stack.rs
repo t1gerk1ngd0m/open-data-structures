@@ -1,28 +1,12 @@
 use crate::array_stack::Stack;
 use crate::array_stack::ArrayStack;
 
-pub trait Rootish<T> {
-  fn size(&self) -> usize;
-  fn get(&self, index: usize) -> T;
-  fn set(&mut self, index: usize, item: T) -> T;
-  fn add(&mut self, index: usize, item: T);
-  fn remove(&mut self, index: usize) -> T;
-}
-
-#[derive(Default)]
 struct RootishArrayStack<T> {
   blocks: ArrayStack<Box<[T]>>,
   n: usize
 }
 
 impl<T: Copy + Default> RootishArrayStack<T> {
-  // fn new() -> Self {
-  //   Self {
-  //     blocks: ArrayStack::new(),
-  //     n: 0
-  //   }
-  // }
-
   fn i2b(&self, i: usize) -> usize {
     // let i = i as f64;
     let db = (-3.0 + (9.0 + 8.0 * i as f64).sqrt()) / 2.0;
@@ -30,7 +14,7 @@ impl<T: Copy + Default> RootishArrayStack<T> {
   }
 }
 
-impl<T: Copy + Default> Rootish<T> for RootishArrayStack<T> {
+impl<T: Copy + Default> Stack<T> for RootishArrayStack<T> {
   fn size(&self) -> usize {
     self.n
   }

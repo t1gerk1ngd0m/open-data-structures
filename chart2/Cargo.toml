@@ -7,3 +7,4 @@ edition = "2021"
 
 [dependencies]
 chart1 = { path = "../chart1" }
+rand = "0.8.5"

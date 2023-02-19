@@ -2,8 +2,8 @@ use chart1::interface::List;
 
 #[derive(Default)]
 pub struct ArrayStack<T> {
-  a: Box<[T]>,
-  n: usize
+  pub a: Box<[T]>,
+  pub n: usize
 }
 
 impl<T: Copy + Default> ArrayStack<T> {

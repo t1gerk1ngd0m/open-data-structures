@@ -1,5 +1,8 @@
-pub trait Queue<T> {
-    fn add(&mut self, x: T);
+pub trait Que<T> {
+    fn get(&self, index: usize) -> T;
+    fn set(&mut self, index: usize, item: T) -> T;
+    fn size(&self) -> usize;
+    fn add(&mut self, item: T);
     fn remove(&mut self) -> T;
 }
 

@@ -1,13 +1,7 @@
-pub trait Que<T> {
-  fn get(&self, index: usize) -> T;
-  fn set(&mut self, index: usize, item: T) -> T;
-  fn size(&self) -> usize;
-  fn add(&mut self, item: T);
-  fn remove(&mut self) -> T;
-}
+use chart1::interface::Que;
 
 #[derive(Default)]
-struct ArrayQue<T> {
+pub struct ArrayQue<T> {
   a: Box<[T]>,
   j: usize,
   n: usize

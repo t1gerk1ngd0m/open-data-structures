@@ -6,19 +6,19 @@ pub trait Deque<T> {
   fn remove(&mut self, index: usize) -> T;
 }
 
-#[derive(Default, std::fmt::Debug)]
-struct ArrayDeque<T> {
-  a: Box<[T]>,
-  j: usize,
-  n: usize
+#[derive(Default)]
+pub struct ArrayDeque<T> {
+  pub a: Box<[T]>,
+  pub j: usize,
+  pub n: usize
 }
 
-impl<T: Copy + Default + std::fmt::Debug> ArrayDeque<T> {
-  fn limit(&self) -> usize {
+impl<T: Copy + Default > ArrayDeque<T> {
+  pub fn limit(&self) -> usize {
     self.a.len()
   }
 
-  fn resize(&mut self) {
+  pub fn resize(&mut self) {
     let new_limit = self.n * 2;
     let mut new_array = vec![Default::default(); new_limit].into_boxed_slice();
     for i in 0..self.n {
@@ -29,7 +29,7 @@ impl<T: Copy + Default + std::fmt::Debug> ArrayDeque<T> {
   }
 }
 
-impl<T: Copy + Default + std::fmt::Debug> Deque<T> for ArrayDeque<T> {
+impl<T: Copy + Default > Deque<T> for ArrayDeque<T> {
   fn size(&self) -> usize {
     self.n
   }

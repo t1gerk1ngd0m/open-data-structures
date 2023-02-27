@@ -1,14 +1,16 @@
 pub trait Que<T> {
-    fn get(&self, index: usize) -> T;
-    fn set(&mut self, index: usize, item: T) -> T;
-    fn size(&self) -> usize;
+    // fn get(&self, index: usize) -> T;
+    // fn set(&mut self, index: usize, item: T) -> T;
+    // fn size(&self) -> usize;
     fn add(&mut self, item: T);
-    fn remove(&mut self) -> T;
+    // fn remove(&mut self) -> T;
+    fn remove(&mut self) -> Option<T>;
 }
 
 pub trait Stack<T> {
     fn push(&mut self, x: T);
-    fn pop(&mut self) -> T;
+    // fn pop(&mut self) -> T;
+    fn pop(&mut self) -> Option<T>;
 }
 
 pub trait List<T: Clone> {

@@ -36,8 +36,8 @@ pub trait USet<T: PartialEq + Clone> {
 pub trait SSet<T: PartialOrd + Clone> {
     fn size(&self) -> usize;
     fn add(&mut self, x: T) -> bool;
-    fn remove(&mut self, x: &T) -> T;
-    fn find(&self, x: &T) -> T;
+    fn remove(&mut self, x: &T) -> Option<T>;
+    fn find(&self, x: &T) -> Option<T>;
 }
 
 pub trait Graph {

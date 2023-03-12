@@ -7,5 +7,6 @@ edition = "2021"
 members = [
   "chart1",
   "chart2",
-  "chart3"
+  "chart3",
+  "chart4",
 ]

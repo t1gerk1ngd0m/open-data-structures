@@ -26,14 +26,14 @@ impl<T: Copy + Default> List<T> for ArrayStack<T> {
     self.n
   }
 
-  fn get(&self, index: usize) -> T {
-    self.a[index]
+  fn get(&self, index: usize) -> Option<T> {
+    Some(self.a[index])
   }
 
-  fn set(&mut self, index: usize, item: T) -> T {
+  fn set(&mut self, index: usize, item: T) -> Option<T> {
     let y = self.a[index];
     self.a[index] = item;
-    y
+    Some(y)
   }
 
   fn add(&mut self, index: usize, item: T) {
@@ -47,7 +47,7 @@ impl<T: Copy + Default> List<T> for ArrayStack<T> {
     self.a[index] = item;
   }
 
-  fn remove(&mut self, index: usize) -> T {
+  fn remove(&mut self, index: usize) -> Option<T> {
     let y = self.a[index];
     self.n -= 1;
 
@@ -61,7 +61,7 @@ impl<T: Copy + Default> List<T> for ArrayStack<T> {
       self.a[self.size()] = Default::default();
     }
 
-    y
+    Some(y)
   }
 }
 
@@ -104,7 +104,7 @@ mod tests {
       a: Box::new([0,1,2,3,4]),
       n: 5
     };
-    assert_eq!(stack.get(1), 1)
+    assert_eq!(stack.get(1).unwrap(), 1)
   }
 
   #[test]
@@ -113,7 +113,7 @@ mod tests {
       a: Box::new([0,1,2,3,4]),
       n: 5
     };
-    assert_eq!(stack.set(1, 10), 1);
+    assert_eq!(stack.set(1, 10).unwrap(), 1);
     assert_eq!(*stack.a, [0,10,2,3,4]);
   }
 
@@ -134,7 +134,7 @@ mod tests {
       a: Box::new([0,1,2,3,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]),
       n: 5
     };
-    assert_eq!(stack.remove(1), 1);
+    assert_eq!(stack.remove(1).unwrap(), 1);
     assert_eq!(*stack.a, [0,2,3,4,0,0,0,0]);
     assert_eq!(stack.n, 4);
   }
@@ -145,7 +145,7 @@ mod tests {
       a: Box::new([0,1,2,3,4]),
       n: 5
     };
-    assert_eq!(stack.remove(1), 1);
+    assert_eq!(stack.remove(1).unwrap(), 1);
     assert_eq!(*stack.a, [0,2,3,4,0]);
     assert_eq!(stack.n, 4);
   }

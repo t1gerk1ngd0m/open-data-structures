@@ -26,9 +26,7 @@ impl<T: Copy + Default> RandomQueue<T> {
     let mut rng = rand::thread_rng();
     rng.gen_range(0..self.limit()) + self.j
   }
-}
 
-impl<T: Copy + Default> Que<T> for RandomQueue<T> {
   fn size(&self) -> usize {
     self.n
   }
@@ -42,7 +40,9 @@ impl<T: Copy + Default> Que<T> for RandomQueue<T> {
     self.a[(self.j + index) % self.limit()] = item;
     y
   }
+}
 
+impl<T: Copy + Default> Que<T> for RandomQueue<T> {
   fn add(&mut self, item: T) {
     if self.size() == self.limit() {
       self.resize()
@@ -51,7 +51,7 @@ impl<T: Copy + Default> Que<T> for RandomQueue<T> {
     self.n += 1
   }
 
-  fn remove(&mut self) -> T {
+  fn remove(&mut self) -> Option<T> {
     let target_index = self.random_index();
     let y = self.a[target_index];
     self.a[target_index] = self.a[self.j];
@@ -62,6 +62,6 @@ impl<T: Copy + Default> Que<T> for RandomQueue<T> {
       self.resize()
     }
 
-    y
+    Some(y)
   }
 }

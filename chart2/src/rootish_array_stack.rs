@@ -19,14 +19,14 @@ impl<T: Copy + Default> List<T> for RootishArrayStack<T> {
     self.n
   }
 
-  fn get(&self, index: usize) -> T {
+  fn get(&self, index: usize) -> Option<T> {
     let b = self.i2b(index);
     let j = index - b*(b+1)/2;
     // self.blocks.get(b)[j]
     todo!()
   }
 
-  fn set(&mut self, index: usize, item: T) -> T {
+  fn set(&mut self, index: usize, item: T) -> Option<T> {
     todo!()
   }
 
@@ -34,7 +34,7 @@ impl<T: Copy + Default> List<T> for RootishArrayStack<T> {
     todo!()
   }
 
-  fn remove(&mut self, index: usize) -> T {
+  fn remove(&mut self, index: usize) -> Option<T> {
     todo!()
   }
 }

@@ -7,3 +7,4 @@ edition = "2021"
 
 [dependencies]
 chart1 = { path = "../chart1" }
+chart2 = { path = "../chart2" }

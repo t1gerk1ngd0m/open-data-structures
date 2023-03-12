@@ -25,6 +25,7 @@ name = "chart3"
 version = "0.1.0"
 dependencies = [
  "chart1",
+ "chart2",
 ]
 
 [[package]]

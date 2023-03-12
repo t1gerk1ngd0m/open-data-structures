@@ -21,9 +21,7 @@ impl<T: Copy + Default> ArrayQue<T> {
     self.a = new_array;
     self.j = 0
   }
-}
 
-impl<T: Copy + Default> Que<T> for ArrayQue<T> {
   fn size(&self) -> usize {
     self.n
   }
@@ -37,7 +35,9 @@ impl<T: Copy + Default> Que<T> for ArrayQue<T> {
     self.a[(self.j + index) % self.limit()] = item;
     y
   }
+}
 
+impl<T: Copy + Default> Que<T> for ArrayQue<T> {
   fn add(&mut self, item: T) {
     if self.size() == self.limit() {
       self.resize()
@@ -46,7 +46,7 @@ impl<T: Copy + Default> Que<T> for ArrayQue<T> {
     self.n += 1
   }
 
-  fn remove(&mut self) -> T {
+  fn remove(&mut self) -> Option<T> {
     let y = self.a[self.j];
     self.a[self.j] = Default::default();
     self.j = (self.j + 1) % self.limit();
@@ -56,7 +56,7 @@ impl<T: Copy + Default> Que<T> for ArrayQue<T> {
       self.resize()
     }
 
-    y
+    Some(y)
   }
 }
 
@@ -108,7 +108,7 @@ mod tests {
       n: 5,
       j: 4
     };
-    assert_eq!(que.remove(), "a");
+    assert_eq!(que.remove().unwrap(), "a");
     assert_eq!(*que.a, ["","","","","","b","c","d","e"]);
     assert_eq!(que.n, 4);
     assert_eq!(que.j, 5);
